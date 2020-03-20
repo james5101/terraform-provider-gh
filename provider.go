@@ -29,13 +29,6 @@ func Provider() terraform.ResourceProvider {
 
 func configureProvider(d *schema.ResourceData) (interface{}, error) {
 	token := d.Get("token").(string)
-	// ctx := context.Background()
-	// ts := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: token})
-	// tc := oauth2.NewClient(ctx, ts)
-
-	// client := github.NewClient(tc)
-
-	// return client
 	c, error := auth(token)
 	if error != nil {
 		return nil, error
