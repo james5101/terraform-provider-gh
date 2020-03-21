@@ -87,9 +87,9 @@ func resourceRepoRead(d *schema.ResourceData, meta interface{}) error {
 
 func resourceRepoDelete(d *schema.ResourceData, meta interface{}) error {
 	name := d.Get("name").(string)
-	ctx := context.Background()
 	client := meta.(*github.Client)
-	client.Repositories.Delete(ctx, "", name)
-	log.Fatal("something happened")
+	client.Repositories.Delete(context.Background(), "james5101", name)
+	log.Printf("[DEBUG]repo was should of been delete %q", name)
+	d.SetId("")
 	return nil
 }
